@@ -49,17 +49,8 @@ function sendData(connection, data) {
   });
 }
 
-
-const innerFunc = async () => {
-  const connection = await createConnection();
-  const data = {
-    status: 200,
-    message: "Hello, mister!",
-    prepared: false,
-  };
-
-  const prepared = await prepareData(data, connection);
-  const serialized = await connection.serializeData(prepared);
+const serializeData = (connection, preparedData) => {
+  const serialized = connection.serializeData(preparedData);
   const result = {
     data: serialized,
     connection,
@@ -69,9 +60,15 @@ const innerFunc = async () => {
 
 const main = async () => {
   try {
-    const result = await innerFunc();
-    const { data, connection } = result;
-    await sendData(connection, data);
+    let connection = await createConnection();
+    let data = {
+      status: 200,
+      message: "Hello, mister!",
+      prepared: false,
+    };
+    const prepared = await prepareData(data, connection);
+    const result = serializeData(connection, prepared);
+    await sendData(result.connection, result.data);
     console.log("Sent");
   } catch (error) {
     console.error(error);
