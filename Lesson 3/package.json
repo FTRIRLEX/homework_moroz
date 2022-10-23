@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node main.js",
     "lint": "eslint --ext .js .",
-    "lint:fix": "eslint --ext .js --fix .",
-    "clear": "rm -rf data/*"
+    "lint:fix": "eslint --ext .js --fix ."
   },
   "license": "ISC",
   "devDependencies": {
