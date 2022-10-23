@@ -1,6 +1,6 @@
 // TASK: Попробуйте изменять переменные и понаблюдать, что получится.
 const secure = true;
-const sendSuccessfully = false;
+const sendSuccessfully = true;
 
 const createConnection = () => {
   console.log("Opening connection...");
@@ -49,24 +49,26 @@ function sendData(connection, data) {
   });
 }
 
-const runFunctions = async () => {
-  try {
-    const innerFunc = async () => {
-      const connection = await createConnection();
-      const data = {
-        status: 200,
-        message: "Hello, mister!",
-        prepared: false,
-      };
 
-      const prepared = await prepareData(data, connection);
-      const serialized = await connection.serializeData(prepared);
-      const result = {
-        data: serialized,
-        connection,
-      };
-      return result;
-    };
+const innerFunc = async () => {
+  const connection = await createConnection();
+  const data = {
+    status: 200,
+    message: "Hello, mister!",
+    prepared: false,
+  };
+
+  const prepared = await prepareData(data, connection);
+  const serialized = await connection.serializeData(prepared);
+  const result = {
+    data: serialized,
+    connection,
+  };
+  return result;
+};
+
+const main = async () => {
+  try {
     const result = await innerFunc();
     const { data, connection } = result;
     await sendData(connection, data);
@@ -76,4 +78,4 @@ const runFunctions = async () => {
   }
 };
 
-runFunctions();
+main();
