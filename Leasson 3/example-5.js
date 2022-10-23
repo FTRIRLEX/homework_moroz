@@ -1,6 +1,6 @@
 // TASK: Попробуйте изменять переменные и понаблюдать, что получится.
 const secure = true;
-const sendSuccessfully = false;
+const sendSuccessfully = true;
 
 const createConnection = () => {
   console.log('Opening connection...');
