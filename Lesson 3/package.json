@@ -1,0 +1,25 @@
+{
+  "name": "leasson-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --ext .js --fix .",
+    "clear": "rm -rf data/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint-config-airbnb-base": "^15.0.0",
+    "node-fetch": "^3.2.10"
+  },
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
+  }
+}
